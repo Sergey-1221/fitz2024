@@ -56,7 +56,7 @@ if st.button('Обработать текст'):
         current_pos = 0  # Текущая позиция в тексте
 
         for para_idx, paragraph in enumerate(paragraphs):
-            para_sentences = nltk.sent_tokenize(paragraph)
+            para_sentences = nltk.sent_tokenize(paragraph, language='russian')
             for sent in para_sentences:
                 # Найти позицию предложения в тексте
                 start_idx = text.find(sent, current_pos)
