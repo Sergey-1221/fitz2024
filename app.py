@@ -39,7 +39,7 @@ similarity_threshold = st.slider('Порог сходства для созда�
 # Кэширование модели для ускорения
 @st.cache_resource
 def load_model():
-    return  ("ai-forever/ru-en-RoSBERTa")
+    return SentenceTransformer("ai-forever/ru-en-RoSBERTa")
 
 
 # Кнопка для запуска обработки
@@ -56,7 +56,7 @@ if st.button('Обработать текст'):
         current_pos = 0  # Текущая позиция в тексте
 
         for para_idx, paragraph in enumerate(paragraphs):
-            para_sentences = nltk.sent_tokenize(paragraph, language='russian')
+            para_sentences = nltk.sent_tokenize(paragraph)
             for sent in para_sentences:
                 # Найти позицию предложения в тексте
                 start_idx = text.find(sent, current_pos)
